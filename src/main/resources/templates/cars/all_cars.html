@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Cars</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="grey">
+        <th>Id</th>
+        <th>User (name + surname)</th>
+        <th>Model</th>
+        <th>Speed</th>
+    </tr>
+    <tr th:each="carDTO : ${carsDTO}">
+        <td align="right" th:text="${carDTO.getId()}">Car DTO</td>
+        <td><a th:text="${carDTO.getUserFullName()}" th:href="@{/users/{id}(id=${carDTO.getUserId()})}"/></td>
+        <td th:text="${carDTO.getModel()}">Car DTO</td>
+        <td align="center" th:text="${carDTO.getSpeed()}">Car DTO</td>
+    </tr>
+</table>
+
+
+</body>
+</html>

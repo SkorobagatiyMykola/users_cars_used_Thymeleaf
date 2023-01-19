@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Create new Car</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/users/{id}/new_car(id=${car.getUserId()})}" th:object="${car}">
+  <label for="model">Enter car model: </label>
+  <input type="text" th:field="*{model}" id="model"/>
+  <br/>
+
+  <label for="speed">Enter car speed: </label>
+  <input type="number" th:field="*{speed}" id="speed"/>
+  <br/>
+
+  <input type="submit" value="Add car for user"/>
+</form>
+</body>
+</html>

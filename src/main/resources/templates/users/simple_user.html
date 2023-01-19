@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="grey">
+        <th>ID</th>
+        <th>NAME</th>
+        <th>SURNAME</th>
+        <th>AGE</th>
+        <th>Email</th>
+    </tr>
+    <tr >
+        <td align="right" th:text="${user.getId()}">User</td>
+        <td th:text="${user.getName()}">User</td>
+        <td th:text="${user.getSurname()}">User</td>
+        <td align="center" th:text="${user.getAge()}">User</td>
+        <td th:text="${user.getEmail()}">User</td>
+    </tr>
+</table>
+
+<a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit user info</a>
+<form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
+    <input type="submit" value="Delete user"/>
+</form>
+
+
+<p>User has cars:</p>
+<table border="1">
+    <tr bgcolor="green">
+        <th>MODEL</th>
+        <th>SPEED</th>
+        <th>Edit car info</th>
+    </tr>
+    <tr th:each="car : ${user.getCars()}">
+        <td th:text="${car.getModel()}">Car</td>
+        <td align="center" th:text="${car.getSpeed()}">Car</td>
+        <td><a th:href="@{/users/{id}(id=${user.getId()})}"/>Detail info</td>
+    </tr>
+</table>
+<br/>
+<hr/>
+<a th:href="@{/users/{id}/new_car(id=${user.getId()})}">Create new car</a>
+</body>
+</html>
